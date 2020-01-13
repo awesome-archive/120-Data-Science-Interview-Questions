@@ -1,7 +1,7 @@
 ## Probability (19 questions)
 
 
-#### 1. Bobo the amoeba has a 25%, 25%, and 50% chance of producing 0, 1, or 2 o spring, respectively. Each of Bobo’s descendants also have the same probabilities. What is the probability that Bobo’s lineage dies out?
+#### 1. Bobo the amoeba has a 25%, 25%, and 50% chance of producing 0, 1, or 2 offspring, respectively. Each of Bobo’s descendants also have the same probabilities. What is the probability that Bobo’s lineage dies out?
   - p=1/4+1/4*p+1/2*p^2 => p=1/2
 #### 2. In any 15-minute interval, there is a 20% probability that you will see at least one shooting star. What is the proba- bility that you see at least one shooting star in the period of an hour?
   - 1-(0.8)^4. Or, we can use Poisson processes
@@ -26,8 +26,17 @@ The result is between 0 (000) and 7 (111), evenly spread (3 independent throw). 
   - the expected number of hash collisions: 1-10*(9/10)^10
   - the expected number of hashes that are unused: 10*(9/10)^10
 #### 11. You call 2 UberX’s and 3 Lyfts. If the time that each takes to reach you is IID, what is the probability that all the Lyfts arrive first? What is the probability that all the UberX’s arrive first?
-  - Lyfts arrive first: 2!*3!/5!
-  - Ubers arrive first: same
+  - All Lyft's first
+  
+    * probability that the first car is Lyft = 3/5
+    * probability that the second car is Lyft = 2/4
+    * probability that the third car is Lyft = 1/3
+    Therefore, probability that all the Lyfts arrive first = (3/5) * (2/4) * (1/3) = 1/10
+  - All Uber's first
+  
+    * probability that the first car is Uber = 2/5
+    * probability that the second car is Uber = 1/4
+    Therefore, probability that all the Ubers arrive first = (2/5) * (1/4) = 1/10
 #### 12. I write a program should print out all the numbers from 1 to 300, but prints out Fizz instead if the number is divisible by 3, Buzz instead if the number is divisible by 5, and FizzBuzz if the number is divisible by 3 and 5. What is the total number of numbers that is either Fizzed, Buzzed, or FizzBuzzed?
   - 100+60-20=140
 #### 13. On a dating site, users can select 5 out of 24 adjectives to describe themselves. A match is declared between two users if they match on at least 4 adjectives. If Alice and Bob randomly pick adjectives, what is the probability that they form a match?
@@ -37,6 +46,14 @@ The result is between 0 (000) and 7 (111), evenly spread (3 independent throw). 
 #### 15. Let’s say you have a very tall father. On average, what would you expect the height of his son to be? Taller, equal, or shorter? What if you had a very short father?
   - Shorter. Regression to the mean
 #### 16. What’s the expected number of coin flips until you get two heads in a row? What’s the expected number of coin flips until you get two tails in a row?
+  - After the first two flips, you can see this problem as a Markov chain, with states HH, HT, TH, TT. 
+  - HH is the final state. You can than define the expected number of steps N before reaching HH: E(N) = 2 + 0.25nHH, 0.25nHT, 0.25nTH, 0.25nTT. nXX represents the expected number of steps before reaching HH starting from state XX.
+  - Solve linear equation:
+  * nHH = 0
+  * nHT = 1 + 0.5nTT + 0.5nTH
+  * nTH = 1 + 0.5nHH + 0.5nHT
+  * nTT = 1 + 0.5nTH + 0.5nTT
+  - Result gives E(N) = 6.
 #### 17. Let’s say we play a game where I keep flipping a coin until I get heads. If the first time I get heads is on the nth coin, then I pay you 2n-1 dollars. How much would you pay me to play this game?
   - less than $3
 #### 18. You have two coins, one of which is fair and comes up heads with a probability 1/2, and the other which is biased and comes up heads with probability 3/4. You randomly pick coin and flip it twice, and get heads both times. What is the probability that you picked the fair coin?
